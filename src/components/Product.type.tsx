@@ -1,4 +1,7 @@
 export type ProductType={
+    item:CardsType
+}
+export type CardsType={
     image:string,
     sale_price:number,
     name:string,

@@ -1,36 +1,39 @@
-"use client"
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+"use client";
+import axios from "axios";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-
+type TopCategoryType = { title: string; slug: string };
 function Navbar() {
-    type titleType = { title: string }
-    
-    const [navbar, setNavbar] = useState<titleType[]>([])
+  const [navbar, setNavbar] = useState<TopCategoryType[]>([]);
 
-    useEffect(() => {
-        axios.get('https://gw.texnomart.uz/api/web/v1/header/top-categories')
-            .then(res => {
-                setNavbar(res.data.data.data)
-                console.log(res.data.data.data)
-            })
-    }, [])
+  useEffect(() => {
+    axios
+      .get("https://gw.texnomart.uz/api/web/v1/header/top-categories")
+      .then((res) => {
+        setNavbar(res.data.data.data);
+        console.log(res.data.data.data);
+      });
+  }, []);
 
-    return (
-        <div className='container mx-auto'>
-            <div className='flex justify-between p-4'>
-                {
-                    navbar.map((item, index) => {
-                        return    <ul key={index} className=''>
-                        <li className='text-xl font-bold'>{item.title}</li>
-                    </ul>
-                    })
-                }
-            </div>
-        
-        </div>
-    )
+  console.log();
+
+  return (
+    <div className="container mx-auto">
+      <div className="flex justify-between p-4">
+        {navbar.map((item, index) => {
+          return (
+            <ul key={index} className="">
+              <Link href={"/category/" + item.slug}>
+                {" "}
+                <li className="text-xl font-bold">{item.title}</li>
+              </Link>
+            </ul>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-
-export default Navbar
+export default Navbar;

@@ -1,15 +1,16 @@
 "use client"
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ProductType } from './Product.type'
+import { CardsType, ProductType } from './Product.type'
 import Link from 'next/link'
 import Image from 'next/image'
+import Cards from './Cards'
 
 function Product() {
-  const [products, setProducts] = useState<ProductType[]>()
+  const [products, setProducts] = useState<CardsType[]>()
   useEffect(()=>{
     axios.get('https://gw.texnomart.uz/api/web/v1/home/special-products?type=hit_products').then(res=>{
-      console.log(res.data.data.data);
+      // console.log(res.data.data.data);
       setProducts(res.data.data.data)
     })
   },[])
@@ -21,13 +22,7 @@ function Product() {
       <h2 className='font-bold text-2xl'>Xit savdo</h2>
       <div className='flex flex-wrap justify-between '>
         {products?.map(item=>{
-          return <div className='border-1 w-65 text-center mb-2 px-2 py-5 rounded-2xl' >
-            <Link href={'/product/'+item.id}> <Image src={item.image} alt={item.name} width={300} height={200}/></Link>
-            <p>{item.name}</p>
-            <p className='mt-2 font-bold'>{item.axiom_monthly_price}</p>
-            <p className='mt-2 font-bold text-xl'>{item.sale_price.toLocaleString('ru')} som</p>
-            
-          </div>
+          return <Cards item={item}/>
         })}
       </div>
     </div>
