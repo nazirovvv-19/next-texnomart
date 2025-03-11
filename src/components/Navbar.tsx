@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -20,6 +21,16 @@ function Navbar() {
 
   return (
     <div className="container mx-auto">
+      <div className="p-2 pb-3 bg-amber-300">
+        <Link href={'/'}>
+          <Image
+            src={"https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg"}
+            alt="logo"
+            width={200}
+            height={50}
+          />
+        </Link>
+      </div>
       <div className="flex justify-between p-4">
         {navbar.map((item, index) => {
           return (

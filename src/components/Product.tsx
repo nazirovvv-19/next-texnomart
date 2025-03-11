@@ -19,6 +19,7 @@ function Product() {
   // }
   return (
     <div className='container mx-auto px-3'>
+      <Image src={'https://mini-io-api.texnomart.uz/newcontent/slider/347/dyFPEw5MYDBCgQSopcXyBcpOE1HVhSugUCb7V3ad.webp'} alt='banner'className='w-full rounded-xl my-6'width={0} height={200}/>
       <h2 className='font-bold text-2xl'>Xit savdo</h2>
       <div className='flex flex-wrap justify-between '>
         {products?.map(item=>{
