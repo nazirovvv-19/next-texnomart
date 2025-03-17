@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Input from "./Input";
 
 type TopCategoryType = { title: string; slug: string };
 function Navbar() {
@@ -21,7 +22,7 @@ function Navbar() {
 
   return (
     <div className="container mx-auto">
-      <div className="p-2 pb-3 bg-amber-300">
+      <div className="p-2 pb-3 bg-amber-300 flex  items-center gap-20">
         <Link href={'/'}>
           <Image
             src={"https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg"}
@@ -30,6 +31,7 @@ function Navbar() {
             height={50}
           />
         </Link>
+       <Input/>
       </div>
       <div className="flex justify-between p-4">
         {navbar.map((item, index) => {
